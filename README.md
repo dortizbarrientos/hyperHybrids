@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository provides a modular pipeline of Python scripts to demonstrate a hypergraph-based approach for analyzing population structure. It uses the **HyperNetX (HNX)** library [cite: 1] to construct, cluster, and visualize hypergraphs.
+This repository provides a modular pipeline of Python scripts to demonstrate a hypergraph-based approach for analyzing population structure. It uses the **HyperNetX (HNX)** library to construct, cluster, and visualize hypergraphs.
 
 The primary example focuses on a simulated dataset representing two parent populations, a third distinct population, and a zone of F1 hybrids between two of the parent populations. The analysis primarily uses simulated multi-dimensional trait data, environmental information, and family structures to define relationships (hyperedges) among individuals.
 
@@ -15,12 +15,12 @@ The goal of this pipeline is to:
 ## Background on Hypergraphs and Hybrid Detection
 
 ### What are Hypergraphs?
-A hypergraph is a generalization of a graph[cite: 1]. In a simple graph, an edge connects a *pair* of nodes (vertices). In contrast, in a hypergraph, a **hyperedge** can connect *any number* of nodes[cite: 1]. This fundamental difference allows hypergraphs to model more complex, higher-order, and multi-way relationships that are difficult to represent with traditional graphs.
+A hypergraph is a generalization of a graph. In a simple graph, an edge connects a *pair* of nodes (vertices). In contrast, in a hypergraph, a **hyperedge** can connect *any number* of nodes. This fundamental difference allows hypergraphs to model more complex, higher-order, and multi-way relationships that are difficult to represent with traditional graphs.
 
-Formally, as defined in the HyperNetX documentation, a hypergraph can be seen as a tuple of three sets, $H = (V, E, \mathcal{I})$[cite: 1]:
-* $V$: A set of *nodes* (or vertices), distinguished by unique identifiers[cite: 1]. In our case, these are individual organisms.
-* $E$: A set of *hyperedges*, also distinguished by unique identifiers[cite: 1]. Each hyperedge represents a specific relationship or shared characteristic among a group of nodes.
-* $\mathcal{I}$: A set of *incidences*, which are pairs of edge and node identifiers, indicating which nodes belong to which hyperedges[cite: 1].
+Formally, as defined in the HyperNetX documentation, a hypergraph can be seen as a tuple of three sets, $H = (V, E, \mathcal{I})$:
+* $V$: A set of *nodes* (or vertices), distinguished by unique identifiers. In our case, these are individual organisms.
+* $E$: A set of *hyperedges*, also distinguished by unique identifiers. Each hyperedge represents a specific relationship or shared characteristic among a group of nodes.
+* $\mathcal{I}$: A set of *incidences*, which are pairs of edge and node identifiers, indicating which nodes belong to which hyperedges.
 
 ### Why are Hypergraphs Useful for Hybrid Detection and Population Structure?
 Detecting and characterizing hybrids and complex population structures often involves understanding nuanced patterns across multiple data types. Hypergraphs offer several advantages here:
@@ -41,7 +41,7 @@ By defining hyperedges thoughtfully, based on biological hypotheses, we can crea
 
 The pipeline consists of 8 Python scripts, designed to be run sequentially. Each script performs a specific task and (typically) saves its output, which then serves as input for the next script.
 
-* **Script 1: `01_simulate_population_data.py`** [cite: 1]
+* **Script 1: `01_simulate_population_data.py`** 
     * Generates a simulated dataset including individuals, their true group assignments (e.g., Parent1, Parent2, Parent3, Hybrid), family structures, environmental assignments, and multi-dimensional trait data.
     * Introduces complexities like phenotypic plasticity and convergent evolution.
     * Outputs: `simulated_individuals.csv`, `simulated_traits.csv`, `simulated_genetic_distances.csv`.
@@ -59,7 +59,7 @@ The pipeline consists of 8 Python scripts, designed to be run sequentially. Each
 
 * **Script 4: `04_perform_hypergraph_clustering.py`**
     * Loads `hypergraph_structure.json` and reconstructs the `HyperNetX.Hypergraph` object.
-    * Applies a hypergraph clustering algorithm (e.g., Kumar's algorithm from `hypernetx.algorithms.hypergraph_modularity` [cite: 1]).
+    * Applies a hypergraph clustering algorithm (e.g., Kumar's algorithm from `hypernetx.algorithms.hypergraph_modularity` ).
     * Outputs: `hypergraph_cluster_assignments.csv` (mapping each individual to a found cluster ID).
 
 * **Script 5: `05_evaluate_clustering_results.py`**
@@ -97,13 +97,13 @@ The pipeline consists of 8 Python scripts, designed to be run sequentially. Each
 ## Features of the Simulated Data (Script 1)
 
 The simulation is designed to create a dataset with realistic complexities, allowing for a thorough test of the hypergraph approach:
-* **True Groups:** Multiple distinct ancestral groups (G1, G2, G3)[cite: 1].
-* **Hybrids:** A designated group of F1 hybrids (Hybrid_G1G2)[cite: 1].
-* **Family Structure:** Small kin groups (families) are defined, with higher genetic similarity within families[cite: 1].
-* **Environmental Association:** True groups have preferential (but not exclusive) associations with different environments[cite: 1].
-* **Trait Variation:** Traits are influenced by true group, environment, and random noise[cite: 1].
-* **Phenotypic Plasticity:** One trait for one group is explicitly made to vary depending on the environment[cite: 1].
-* **Convergent Evolution:** One trait for two genetically distinct groups is made to converge when those groups are in a specific shared environment[cite: 1].
+* **True Groups:** Multiple distinct ancestral groups (G1, G2, G3).
+* **Hybrids:** A designated group of F1 hybrids (Hybrid_G1G2).
+* **Family Structure:** Small kin groups (families) are defined, with higher genetic similarity within families.
+* **Environmental Association:** True groups have preferential (but not exclusive) associations with different environments.
+* **Trait Variation:** Traits are influenced by true group, environment, and random noise.
+* **Phenotypic Plasticity:** One trait for one group is explicitly made to vary depending on the environment.
+* **Convergent Evolution:** One trait for two genetically distinct groups is made to converge when those groups are in a specific shared environment.
 
 ## Prerequisites
 

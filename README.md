@@ -1,5 +1,5 @@
 # hyperHybrids
-**Hypergraph Analysis Pipeline for Hybrid Identification **
+Hypergraph Analysis Pipeline for Hybrid Identification
 
 ## Introduction
 
